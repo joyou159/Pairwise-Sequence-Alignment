@@ -3,28 +3,28 @@ import numpy as np
 from matplotlib.colors import ListedColormap
 from util import get_diagonals
 
-def plot_sequence_alignment(sequence1, sequence2):
+def plot_protein_sequence_alignment(protein1, protein2):
     """
-    Generate a dot plot for pairwise sequence alignment with identified diagonals.
+    Generate a dot plot for pairwise protein sequence alignment with identified diagonals.
     
-    This function creates a dot plot that visualizes the pairwise alignment of two sequences
-    (DNA, RNA, or protein). Matches between the sequences are indicated by red squares, 
-    and diagonals (both main and reverse) are marked with black and green lines, respectively.
+    This function creates a dot plot that visualizes the pairwise alignment of two protein sequences.
+    Matches between the sequences are indicated by red squares, and diagonals (both main and reverse)
+    are marked with black and green lines, respectively.
 
     Args:
-        sequence1 (str): The first sequence (DNA, RNA, or protein).
-        sequence2 (str): The second sequence (DNA, RNA, or protein).
+        protein1 (str): The first protein sequence (amino acids).
+        protein2 (str): The second protein sequence (amino acids).
     
     Returns:
         None: Displays the dot plot using matplotlib.
     """
     # Initialize an empty alignment matrix for matches
-    alignment_matrix = np.zeros((len(sequence1), len(sequence2), 3))
+    alignment_matrix = np.zeros((len(protein1), len(protein2), 3))
 
-    # Populate the alignment matrix: 1 indicates a match
-    for i in range(len(sequence1)):
-        for j in range(len(sequence2)):
-            if sequence1[i] == sequence2[j]:
+    # Populate the alignment matrix: 1 indicates a match between amino acids
+    for i in range(len(protein1)):
+        for j in range(len(protein2)):
+            if protein1[i] == protein2[j]:
                 alignment_matrix[i, j, 0] = 1
 
     # Extract main and reverse diagonals using get_diagonals
@@ -46,17 +46,18 @@ def plot_sequence_alignment(sequence1, sequence2):
     for diagonal in reverse_diagonals:
         plt.plot(diagonal[0], diagonal[1], ".-", color='green', linewidth=3, markersize=10)
 
-    plt.xticks(np.arange(len(sequence2)) + 0.5, list(sequence2))
-    plt.yticks(np.arange(len(sequence1)) + 0.5, list(sequence1[::-1]))
+    plt.xticks(np.arange(len(protein2)) + 0.5, list(protein2))
+    plt.yticks(np.arange(len(protein1)) + 0.5, list(protein1[::-1]))
 
-    plt.xlabel("$Sequence 2$")
-    plt.ylabel("$Sequence 1$")
+    plt.xlabel("Protein Sequence 2")
+    plt.ylabel("Protein Sequence 1")
     
     # Move the x-axis to the top
     plt.gca().xaxis.tick_top()
     plt.gca().xaxis.set_label_position('top')
 
-    match_legend = plt.Rectangle((0, 0), 1, 1, color='red', label='Match')
+    # Create the legends for matches and diagonals
+    match_legend = plt.Rectangle((0, 0), 1, 1, color='red', label='Amino Acid Match')
     main_diagonal_legend = plt.Line2D([0], [0], marker='.', linestyle="-", color='black', markersize=10, label='Main Diagonal')
     reverse_diagonal_legend = plt.Line2D([0], [0], marker='.', linestyle="-", color='green', markersize=10, label='Reverse Diagonal')
     
@@ -66,7 +67,7 @@ def plot_sequence_alignment(sequence1, sequence2):
     plt.tight_layout() 
     plt.show()
 
-# Test Case
-sequence1 = "MKTAYIAKQRQISFVKSHFSRQLEERLGLIEVQANNLR"
-sequence2 = "MKTAYIAKQRQISFVKSHFSRQLEER"
-plot_sequence_alignment(sequence1, sequence2)
+# Test Case for protein sequences
+protein1 = "MKTAYIAKQRQISFVKSHFSRQLEERLGLIEVQANNLR"
+protein2 = "MKTAYIAKQRQISFVKSHFSRQLEER"
+plot_protein_sequence_alignment(protein1, protein2)
