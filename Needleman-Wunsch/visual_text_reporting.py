@@ -89,4 +89,4 @@ def plot_needleman_wunsch(protein1, protein2, scoring_scheme, file_name=None):
 protein1 = "CTATTGACGTA"
 protein2 = "CTATGAA"
 scoring_scheme = {'match_score': 5, 'mismatch_penalty': -2, 'gap_penalty': -4}
-plot_needleman_wunsch(protein1, protein2, scoring_scheme, "alignment_result.txt")
+plot_needleman_wunsch(protein1, protein2, scoring_scheme, "Needleman-Wunsch/alignment_result.txt")
