@@ -1,0 +1,8 @@
+Alignment Result 1 with Score (19.0):
+CTATTGACGTA
+CTA-TGA---A
+------------------
+Alignment Result 2 with Score (19.0):
+CTATTGACGTA
+CTAT-GA---A
+------------------
