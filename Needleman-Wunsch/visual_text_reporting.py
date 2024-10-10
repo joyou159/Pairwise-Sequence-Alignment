@@ -2,9 +2,18 @@ import matplotlib.pyplot as plt
 from NW import *
 
 def plot_needleman_wunsch(protein1, protein2, scoring_scheme):
-    # Generate the scores matrix and the optimal alignment path
+    """
+    Plot the Needleman-Wunsch scoring matrix and save the alignment result if specified.
+
+    Parameters:
+    protein1 (str): The first protein sequence.
+    protein2 (str): The second protein sequence.
+    scoring_scheme (dict): The scoring parameters used for alignment.
+    file_name (str, optional): The name of the file to save the alignment. Defaults to None.
+    """
+    # Generate the scores matrix and the optimal alignment paths
     scores = needleman_wunsch(protein1, protein2, scoring_scheme)
-    path = traceback_path(scores, protein1, protein2, scoring_scheme)
+    all_paths = find_all_paths(scores, protein1, protein2, scoring_scheme)
 
     # Create the plot
     plt.figure(figsize=(7, 6))
@@ -18,9 +27,13 @@ def plot_needleman_wunsch(protein1, protein2, scoring_scheme):
         for j in range(scores.shape[1]):
             plt.text(j, i, f'{int(scores[i, j])}', ha='center', va='center', color='black', fontsize=10)
 
-    # Highlight the traceback path
-    path_y, path_x = zip(*path)
-    plt.plot(path_x, path_y, color='yellow', marker='o', markersize=15, label='Optimal Path')
+    # Generate colors for each path
+    colors = plt.cm.viridis(np.linspace(0, 1, len(all_paths)))
+
+    # Plot each optimal path in a different color
+    for idx, path in enumerate(all_paths):
+        path_y, path_x = zip(*path)
+        plt.plot(path_x, path_y, color=colors[idx], marker='o', markersize=20, label=f'Path {idx + 1}', alpha=0.5, linewidth=2)
 
     plt.xlabel("Protein 2", fontsize=14)
     plt.ylabel("Protein 1", fontsize=14)
@@ -32,7 +45,7 @@ def plot_needleman_wunsch(protein1, protein2, scoring_scheme):
     plt.yticks(ticks=np.arange(1, len(protein1) + 1), labels=list(protein1), fontsize=12)
 
     # Move legend outside of the plot
-    plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left', borderaxespad=0.)
+    plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left', borderaxespad=0, ncol=2, borderpad=1)
 
     # Show plot with layout adjustment
     plt.tight_layout()
