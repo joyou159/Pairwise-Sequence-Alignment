@@ -59,7 +59,7 @@ The optimal alignment is found by maximizing the alignment score.
 2. **Needleman-Wunsch Algorithm**
    - Plot the alignment scoring matrix and optionally save the alignment result:
      ```python
-     from visual_text_reporting import plot_alignment
+     from NW_alignment import plot_alignment
      sequence1 = "CTATTGACGTA"
      sequence2 = "CTATGAA"
      scoring_scheme = {'match_score': 5, 'mismatch_penalty': -2, 'gap_penalty': -4}
