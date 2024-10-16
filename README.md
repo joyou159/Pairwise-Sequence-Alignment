@@ -9,7 +9,7 @@ This repository provides implementations for basic sequence alignment techniques
 The Needleman-Wunsch algorithm is a global alignment technique used to align entire sequences from end to end. It uses a dynamic programming approach to find the optimal alignment based on a scoring scheme.
 
   <p align="center">
-  <img src="READMD-Assets\NW.png" alt="Global alignment using NW algorithm" title="Global alignment using NW algorithm" width="400" />
+  <img src="READMD-Assets\NW.png" alt="Global alignment using NW algorithm" title="Global alignment using NW algorithm" width="450" />
   </p>
 
 ### How It Works
@@ -36,7 +36,7 @@ The optimal alignment is found by maximizing the alignment score.
 The Dot Plot method is a simple graphical approach used to compare two sequences. It displays similarities between the sequences in a matrix form, where each axis represents one of the sequences. 
 
   <p align="center">
-  <img src="READMD-Assets\Dot_plot.png" alt="Demo of data included in the dataset" title="Demo of data included in the dataset" width="400" />
+  <img src="READMD-Assets\Dot_plot.png" alt="Demo of data included in the dataset" title="Demo of data included in the dataset" width="450" />
   </p>
 
 ### How It Works
