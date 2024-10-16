@@ -36,7 +36,7 @@ The optimal alignment is found by maximizing the alignment score.
 The Dot Plot method is a simple graphical approach used to compare two sequences. It displays similarities between the sequences in a matrix form, where each axis represents one of the sequences. 
 
   <p align="center">
-  <img src="READMD-Assets\Dot_plot.png" alt="Demo of data included in the dataset" title="Demo of data included in the dataset" width="450" />
+  <img src="READMD-Assets\Dot_plot.png" alt="Highlighing the similarities between two sequences using dot plot" title="Highlighing the similarities between two sequences using dot plot" width="450" />
   </p>
 
 ### How It Works
