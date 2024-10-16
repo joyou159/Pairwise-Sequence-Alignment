@@ -4,24 +4,13 @@ This repository provides implementations for basic sequence alignment techniques
 
 # Alignment Techniques
 
-
-## Dot Plot
-### Overview
-The Dot Plot method is a simple graphical approach used to compare two sequences. It displays similarities between the sequences in a matrix form, where each axis represents one of the sequences.
-
-### How It Works
-1. The sequences are placed along the horizontal and vertical axes of a matrix.
-2. A dot is placed in the matrix at positions where the corresponding elements of the sequences are identical (or similar based on a threshold).
-3. The resulting pattern shows regions of similarity, such as diagonals indicating consecutive matches or repeating patterns.
-
-### Applications
-- Visual identification of repeating sequences.
-- Locating regions of high similarity between sequences.
-- Detecting inversions or translocations in genomic data.
-
 ## Needleman-Wunsch Algorithm
 ### Overview
 The Needleman-Wunsch algorithm is a global alignment technique used to align entire sequences from end to end. It uses a dynamic programming approach to find the optimal alignment based on a scoring scheme.
+
+  <p align="center">
+  <img src="READMD-Assets\NW.png" alt="Global alignment using NW algorithm" title="Global alignment using NW algorithm" width="400" />
+  </p>
 
 ### How It Works
 1. **Initialization**: A scoring matrix is created with the sequences along the horizontal and vertical axes. The first row and column are initialized with gap penalties.
@@ -41,22 +30,52 @@ The optimal alignment is found by maximizing the alignment score.
 - Studying evolutionary relationships by finding the best global alignment.
 - Serving as a foundation for other alignment algorithms, such as Smith-Waterman.
 
+
+## Dot Plot
+### Overview
+The Dot Plot method is a simple graphical approach used to compare two sequences. It displays similarities between the sequences in a matrix form, where each axis represents one of the sequences. 
+
+  <p align="center">
+  <img src="READMD-Assets\Dot_plot.png" alt="Demo of data included in the dataset" title="Demo of data included in the dataset" width="400" />
+  </p>
+
+### How It Works
+1. The sequences are placed along the horizontal and vertical axes of a matrix.
+2. A dot is placed in the matrix at positions where the corresponding elements of the sequences are identical (or similar based on a threshold).
+3. The resulting pattern shows regions of similarity, such as diagonals indicating consecutive matches or repeating patterns.
+
+### Applications
+- Visual identification of repeating sequences.
+- Locating regions of high similarity between sequences.
+- Detecting inversions or translocations in genomic data.
+
+
 ## Usage
-### Prerequisites
-- Python 3.x
-- `matplotlib` for plotting
-- `numpy` for matrix operations
+
+### Installation
+
+1. **Clone the Repository:**
+    ```bash
+    git clone git@github.com:joyou159/Pairwise-Sequence-Alignment.git
+    cd Pairwise-Sequence-Alignment
+    ```
+2. **Install Dependencies:**
+    ```bash
+    pip install -r requirements.txt
+    ```
 
 ### Running the Code
-1. **Dot Plot**
+
+-  **Dot Plot**
    - Use the provided function to generate a dot plot for two sequences:
      ```python
      from generate_dot_plot import plot_dot_plot
-     sequence1 = "AGCTT"
-     sequence2 = "CGTT"
+     sequence1 = "CTATTGACGTA"
+     sequence2 = "CTATGAA"
      plot_dot_plot(sequence1, sequence2)
      ```
-2. **Needleman-Wunsch Algorithm**
+
+-  **Needleman-Wunsch Algorithm**
    - Plot the alignment scoring matrix and optionally save the alignment result:
      ```python
      from NW_alignment import plot_alignment
